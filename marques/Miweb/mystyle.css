@@ -1,0 +1,116 @@
+body {
+    background-color: teal;
+    color: wheat;
+    font-family: monospace;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+a {
+    color: wheat;
+    text-decoration: none;
+}
+
+a:visited {
+    color: rgb(253, 207, 1);
+}
+
+a:hover {
+    color: rgb(97, 88, 72);
+}
+
+a:active {
+    color: rgb(255, 145, 0);
+}
+
+nav a {
+    display: block; /* Make the links occupy the full width of the container */
+}
+p {
+    font-size: 2em;
+}
+ul {
+    font-size: 2em;
+    list-style-type: circle;
+    float: left;
+}
+.content {
+    display: flex; /* Use flexbox */
+    justify-content: space-around; /* Evenly space the elements */
+    align-items: center; /* Vertically center the elements */
+    font-size: 2em;
+    background-color: rgb(0, 61, 61);
+}
+.bigNav {
+    display: flex; /* Use flexbox */
+    justify-content: space-around; /* Evenly space the elements */
+    align-items: center; /* Vertically center the elements */
+    font-size: 3em;
+    background-color: rgb(0, 61, 61);
+    height: 2em; /* Set the desired height */
+    border: 0.5em;
+    border-color: rgb(253, 207, 1);
+    border-style: inset;
+    padding: 0.2em 0; /* Add some vertical padding to match the spacing */
+}
+.smallNav {
+    display: flex; /* Use flexbox */
+    justify-content: space-around; /* Evenly space the elements */
+    align-items: center; /* Vertically center the elements */
+    font-size: 2em;
+    background-color: rgb(0, 61, 61);
+    height: 1.5em; /* Set the desired height */
+    border: 0.25em;
+    border-color: rgb(253, 207, 1);
+    border-style: inset;
+    padding: 0.2em 0; /* Add some vertical padding to match the spacing */
+}
+.pel {
+    font-size: 2em;
+    text-align: center;
+}
+
+#pel1 img,
+#pel2 img,
+#pel3 img {
+    width: 70%;
+    height: auto; /* Maintain image proportions */
+    display: block; /* Asegura que la imatge es mostri com un bloc */
+    margin: 0 auto; /* Centra horitzontalment la imatge dins del div */
+    margin-bottom: 3%;
+}
+
+#pel1,
+#pel2,
+#pel3 {
+    float: left;
+    width: 33.3%; /* Assegura que cada div ocupi un terç de l'amplada */
+    height: 25%; /* Set a fixed height for the image container */
+    box-sizing: border-box; /* Evita que els marges sumin a l'amplada */
+    padding: 1%;
+}
+
+.notes {
+    font-size: 1em;
+    padding: 1%;
+    color: rgb(253, 207, 1);
+    background-color: rgb(0, 61, 61);
+}
+#primera {
+    border: 0.5em;
+    border-color: rgb(253, 207, 1);
+    border-style: inset;
+}
+#segona {
+    border: 0.5em;
+    border-color: rgb(202, 202, 202);
+    border-style: inset;
+}
+#tercera {
+    border: 0.5em;
+    border-color: rgb(134, 60, 0);
+    border-style: inset;
+}

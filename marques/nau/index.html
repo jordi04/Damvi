@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nau</title>
+    <style>
+        #canvas {
+            width: 700px;
+            height: 700px;
+            background-color: black;
+            position: relative;
+        }
+        span#nau {
+            color: red;
+            position: absolute;
+            left: 350px;
+            top: 350px;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas" tabindex="0" onkeydown="mouNau(event);">
+        <span id="nau">*</span>
+    </div>
+    <script>
+        var x = 350;
+        var y = 350;
+        createStars(); // Call the function to create stars when moving the player
+
+        function createStars() {
+            var stars = 55;
+            for (var i = 0; i < stars; i++) {
+                // Create an element span and store it in a variable
+                var star = document.createElement("span");
+
+                // Assign properties to the star element
+                star.className = "star";
+                star.style.color = "white";
+                star.style.position = "absolute";
+
+                // Generate random positions for the star
+                var starX = Math.floor(Math.random() * 700);
+                var starY = Math.floor(Math.random() * 700);
+
+                // Assign the positions to the top and left properties of the star
+                star.innerHTML = "+";
+                star.style.left = starX + "px";
+                star.style.top = starY + "px";
+
+                // Append the star to the canvas
+                document.getElementById("canvas").appendChild(star);
+            }
+        }
+
+        function mouNau(event) {
+            var tecla = event.keyCode;
+            console.log(tecla);
+            nau = document.getElementById('nau');
+            
+            if (tecla == 87) {
+                y -= 10;
+            }
+            else if (tecla == 65) {
+                x -= 10;
+            }
+            else if (tecla == 83){
+                y += 10;
+            }
+            else if (tecla == 68) {
+                x += 10;
+            }
+
+            nau.style.left = x + "px";
+            nau.style.top = y + "px";
+
+        }
+    </script>
+</body>
+</html>
