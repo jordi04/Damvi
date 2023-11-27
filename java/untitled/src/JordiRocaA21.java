@@ -6,7 +6,7 @@ class Persona{  // <-- Definició d'una classe amb nom persona
     int edat;
     double altura;
 }
-public class JordiRocaA20 {
+public class JordiRocaA21 {
     public static void main(String[] args) {
         /*
         Fes un programa en Java que llegeix les dades de 5 persones (nom, primer cognom, segon cognom, edat i alçada),
@@ -38,6 +38,22 @@ public class JordiRocaA20 {
         for (int i = 0; i < persones.length; ++i) {
             System.out.printf("\n\n %d)La persona %s %s %s té %d anys i fa %f metres d'altura", i+1, persones[i].nom, persones[i].primerCognom, persones[i].segonCognom, persones[i].edat, persones[i].altura);
         }
+
+        boolean found = false;
+        int k = 0;
+        System.out.println("\nIntrodueix el nom de la persona a buscar: ");
+        String nomUsuari = input.nextLine();
+        while (k < persones.length) {
+
+            if (persones[k].nom.equals(nomUsuari)) {
+                found = true;
+                k = persones.length;
+            }
+            k++;
+        }
+
+        if (found) System.out.printf("\n\n Existeix almenys una persona anomenada %s ", nomUsuari);
+        else System.out.printf("\n\n No existeix cap persona anomenada %s ", nomUsuari);
 
     }
 }
