@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<style>
+	#nombre:focus{
+		background:red;
+		}
+
+	#apellido:focus{
+		background:blue;
+		}
+	#Motivo:focus{
+		background:green;
+		}
+	#info{
+ 		  cursor: pointer;
+    background-color:black;
+   
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    border-color:blue;
+		}
+	
+
+	
+	</style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<form action="http:www.google.com" method="POST">
+		<div>
+			<label for="nombre">Nombre:</label>
+			<input id="nombre" name="surname"type="text" value="">
+		</div>
+		
+		<div class=>
+			<label for="apellido">Apelido:</label>
+			<input id="apellido"type="text">
+		</div>
+		<div>
+			<label for="Pais">pa&iacute;s</label>
+			<select id="Pais" name"country">
+				<option value = "IT">España</opcion>
+				<option value = "FRA">Francia</opcion>
+				<option value = "ES">España</opcion>
+				<option value = "PY" selected>Paraguay</opcion>
+			</select>
+		</div>
+		<div>
+			<label for="Motivo">motivo de inscripcion</label>
+			<textarea id="Motivo">Algo...</textarea>
+		</div>
+		<div clase="check">
+			<label for="info">Quiero recibir informacion</label>
+			<input type="checkbox" id="info">
+		</div>
+
+		<div>
+			<label for="Condiciones">Acepto las condiciones</label>
+			<input type="checkbox" id="Condiciones">
+		</div>
+
+		<div>
+			<label for="calendario">Quiero ver el calendario</label>
+			<input type="checkbox" id="calendario">
+		</div>
+		<div>
+			<input type ="submit" value="enviar">
+			<!--
+			<input type="button" value="hola"
+			>//-->
+
+		</div>
+		
+	</form>
+</body>
+</html
