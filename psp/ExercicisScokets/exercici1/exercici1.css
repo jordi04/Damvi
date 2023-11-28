@@ -1,0 +1,89 @@
+// Importem el mòdul WebSocketSharp per crear un client webSocket
+using WebSocketSharp;
+
+// Creem una classe per representar el client
+public class Client : MonoBehaviour
+{
+  // Definim l'adreça del servidor webSocket
+  private string url = "ws://localhost:8080";
+
+  // Definim una variable per guardar la instància del client webSocket
+  private WebSocket socket;
+
+  // Definim una variable per guardar l'estat de la connexió
+  private bool connected = false;
+
+  // Definim una funció per connectar-se al servidor
+  public void Connect()
+  {
+    // Si ja estem connectats, no fem res
+    if (connected) return;
+
+    // Creem una nova instància del client webSocket
+    socket = new WebSocket(url);
+
+    // Definim una funció per gestionar els missatges que rep el client
+    socket.OnMessage += (sender, e) =>
+    {
+      // Podem fer el que vulguem amb el missatge, per exemple, mostrar-lo per consola
+      Debug.Log(e.Data);
+    };
+
+    // Definim una funció per gestionar les connexions al servidor
+    socket.OnOpen += (sender, e) =>
+    {
+      // Actualitzem l'estat de la connexió
+      connected = true;
+
+      // Mostrem un missatge per consola
+      Debug.Log("Connectat al servidor");
+    };
+
+    // Definim una funció per gestionar les desconnexions del servidor
+    socket.OnClose += (sender, e) =>
+    {
+      // Actualitzem l'estat de la connexió
+      connected = false;
+
+      // Mostrem un missatge per consola
+      Debug.Log("Desconnectat del servidor");
+    };
+
+    // Iniciem la connexió al servidor
+    socket.Connect();
+  }
+
+  // Definim una funció per desconnectar-se del servidor
+  public void Disconnect()
+  {
+    // Si no estem connectats, no fem res
+    if (!connected) return;
+
+    // Tanquem la connexió al servidor
+    socket.Close();
+  }
+
+  // Definim una funció per crear un botó de conectar/desconnectar
+  private void OnGUI()
+  {
+    // Definim el text del botó segons l'estat de la connexió
+    string buttonText = connected ? "Desconnectar" : "Connectar";
+
+    // Definim la posició i la mida del botó
+    Rect buttonRect = new Rect(10, 10, 100, 30);
+
+    // Creem el botó i comprovem si s'ha clicat
+    if (GUI.Button(buttonRect, buttonText))
+    {
+      // Si s'ha clicat, cridem la funció corresponent segons l'estat de la connexió
+      if (connected)
+      {
+        Disconnect();
+      }
+      else
+      {
+        Connect();
+      }
+    }
+  }
+}
