@@ -18,15 +18,15 @@
                 transform: translateY(0) translateX(0) rotate(0deg);
             }
             to {
-                transform: translateY(70vh) translateX(40vh) rotate(45deg); /* Adjust the angle as needed */
+                transform: translateY(70vh) translateX(40vh) rotate(var(--random-angle));
             }
         }
         @keyframes go-up-animation {
             from {
-                transform: translateY(70vh) translateX(40vh) rotate(45deg);
+                transform: translateY(70vh) translateX(40vh) rotate(var(--random-angle));
             }
             to {
-                transform: translateY(0) translateX(0) rotate(0deg); /* Adjust the angle as needed */
+                transform: translateY(0) translateX(0) rotate(0deg);
             }
         }
     </style>
@@ -53,7 +53,11 @@
         const title = document.getElementById('title');
         let isFallingDown = true;
         let isGoingUp = false;
+
         function titleClick() {
+            // Generate a random angle and set it as a CSS variable
+            document.documentElement.style.setProperty('--random-angle', `${getRandomAngle()}deg`);
+
             // Add or remove the 'falling-down' class based on the state
             if (isFallingDown) {
                 title.classList.add('falling-down');
@@ -69,7 +73,11 @@
             // Toggle the state for the next click
             isFallingDown = !isFallingDown;
             isGoingUp = !isGoingUp;
-            // Remove the onclick attribute to prevent further clicks
+        }
+
+        function getRandomAngle() {
+            // Generate a random angle between -45 and 45 degrees
+            return Math.floor(Math.random() * 90) - 45;
         }
     </script>
 </body>
