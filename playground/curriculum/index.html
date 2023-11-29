@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jordi Roca Bonnin</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #title.falling-down {
+            animation: fall-down-animation 1.5s ease-in-out forwards;
+        }
+        #title.going-up {
+            animation: go-up-animation 1.5s ease-in-out forwards;
+        }   
+
+        @keyframes fall-down-animation {
+            from {
+                transform: translateY(0) translateX(0) rotate(0deg);
+            }
+            to {
+                transform: translateY(70vh) translateX(40vh) rotate(45deg); /* Adjust the angle as needed */
+            }
+        }
+        @keyframes go-up-animation {
+            from {
+                transform: translateY(70vh) translateX(40vh) rotate(45deg);
+            }
+            to {
+                transform: translateY(0) translateX(0) rotate(0deg); /* Adjust the angle as needed */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <form>
+            <div id="titleDiv">
+                <input type="button" id="title" onclick="titleClick()" value="Currículum Jordi Roca">
+            </div>
+
+            <div>
+                <input type="button" name="correu" class="centrat" value="Correu" onclick="enviaCorreu()">
+            </div>
+            <div>
+                <button type="button" name="github" class="centrat" onclick="github()">GitHub</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        const title = document.getElementById('title');
+        let isFallingDown = true;
+        let isGoingUp = false;
+        function titleClick() {
+            // Add or remove the 'falling-down' class based on the state
+            if (isFallingDown) {
+                title.classList.add('falling-down');
+            } else {
+                title.classList.remove('falling-down');
+            }
+            if (isGoingUp) {
+                title.classList.add('going-up');
+            } else {
+                title.classList.remove('going-up');
+            }
+
+            // Toggle the state for the next click
+            isFallingDown = !isFallingDown;
+            isGoingUp = !isGoingUp;
+            // Remove the onclick attribute to prevent further clicks
+        }
+    </script>
+</body>
+</html>

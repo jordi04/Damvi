@@ -15,8 +15,11 @@ body {
 .incorrecte {
     background-color: orange;
 }
-h1 {
-    padding-top: 3%;
+#title {
+    transition: transform 500ms linear;
+}
+div#titleDiv {
+    padding-bottom: 10%;
 }
 div {
     padding-top: 4%;
@@ -25,6 +28,18 @@ div.form {
     display: block;
     text-align: center;
 }
+button.centrat {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: yellow;
+    border-color: black;
+    border-width: 0.2em;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .final {
     padding-top: 5%;
     display: block;
