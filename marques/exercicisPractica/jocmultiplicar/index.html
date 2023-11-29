@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joc multiplicar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div>
+        <h1 id="title">Joc multiplicar</h1>
+        
+        <form>
+            <div>
+                <label id="multiplicacio" for="multiplicacio"> </label>
+                <input type="number" name="multiplicacio" id="multiplicacioInput" max="100" required>
+            </div>
+            <div>
+                <input type="button" name="calcula" class="centrat" value="Calcula" onclick="calcular()">
+            </div>
+            <div>
+                <input type="button" name="calcula" class="centrat" value="Torna a jugar" onclick="novaMultiplicacio()">
+            </div>
+        </form>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

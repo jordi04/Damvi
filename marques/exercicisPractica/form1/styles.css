@@ -9,8 +9,26 @@ body {
 .validat {
     color: green;
 }
+h1 {
+    padding-top: 3%;
+}
 div {
-    padding-top: 2%;
+    padding-top: 4%;
+}
+div.form {
+    display: block;
+    text-align: center;
+}
+.final {
+    padding-top: 5%;
+    display: block;
+    text-align: center;
+}
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
 input {
     font-family: monospace;
@@ -23,8 +41,16 @@ input {
 }
 input#submit {
     background-color: yellow;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 input#conditions {
+    height: 30px;
+    width: 30px;
+}
+input#showPasswd {
     height: 30px;
     width: 30px;
 }

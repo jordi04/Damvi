@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div>
+        <h1 id="title">Calculadora</h1>
+        
+        <form onsubmit="return calcular()" method="POST">
+            <div>
+                <label id="operacio" for="operacio"> </label>
+                <input type="number" name="num1" id="num1" max="100" required>
+                <input list="operador" name="operador" id="operadors" autocomplete="off">
+                <datalist id="operador">
+                    <option value=+></option>
+                    <option value=-></option>
+                    <option value=*></option>
+                    <option value="/"></option>
+                </datalist>
+                <input type="number" name="num2" id="num2" max="100" required>
+                <div id="resultat">
+                    
+                </div>
+            </div>
+            <div>
+                <input type="button" name="calcula" class="centrat" value="Calcula" onclick="calcular()">
+            </div>
+            <div>
+                <input type="button" name="borra" class="centrat" value="Esborra" onclick="borra()">
+            </div>
+        </form>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

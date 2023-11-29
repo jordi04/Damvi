@@ -1,0 +1,51 @@
+body {
+    background-color: rgb(86, 33, 155); 
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+}
+h1 {
+    padding-top: 3%;
+}
+div {
+    padding-top: 4%;
+}
+div.form {
+    display: block;
+    text-align: center;
+}
+.final {
+    padding-top: 5%;
+    display: block;
+    text-align: center;
+}
+form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+input {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: yellow;
+    border-color: black;
+    border-width: 0.2em;
+}
+input#num1 ,input#num2, input#operadors {
+    width: 10%;
+    text-align: center;
+}
+input.operacio {
+    width: 2em;
+}
+input.centrat {
+    background-color: yellow;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}

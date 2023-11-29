@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercici</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <div>
+        <h1 id="title">Exercici Formulari</h1>
+        
+        <form onsubmit="return validar()" method="POST">
+            <div>
+                <label for="name">Nom: </label>
+                <input type="text" name="name" id="name" minlength="2" maxlength="10">
+            </div>
+            
+            <div>
+                <label for="surname">Cognom: </label>
+                <input type="text" name="surname" id="surname" minlength="2" maxlength="10">
+            </div>
+            
+            <div>
+                <label for="age">Edat: </label>
+                <input type="number" name="age" id="age" min="18" max="69">
+            </div>
+    
+            <div>
+                <label for="email">Correu: </label>
+                <input type="email" name="email" id="email" required>
+            </div>
+            
+    
+            <div>
+                <label for="password">Contrasenya: </label>
+                <input type="password" name="password" id="password" required>
+                <input type="checkbox" onclick="showPasswd()" id="showPasswd"> Mostrar
+            </div>
+            
+    
+            <div>
+                <label for="conditions">Condicions: </label>
+                <input type="checkbox" name="conditions" id="conditions">
+            </div>
+            <div>
+                <label for="knowus">Condicions: </label>
+                <input type="date" name="knowus" id="knowus">
+            </div>
+            <div>
+                <input type="submit" id="submit" onsubmit="this.disabled = true">
+            </div>
+            
+            
+    
+        </form>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
