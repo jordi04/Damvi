@@ -6,6 +6,28 @@ body {
     color: white;
     text-align: center;
 }
+.customCursor {
+    cursor: url(screwCursor.png), auto;
+}
+button.centrat {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: yellow;
+    border-color: black;
+    border-width: 0.2em;
+    display: block;
+    margin: 0.5em; /* Adjust the margin to make the active area smaller */
+}
+.destaca {
+    background-color: yellow;
+    color: black;
+    border-color: black;
+    border-width: 0.5em; /* Set the border width to match the button.centrat class */
+    border-style: outset;
+
+}
+
 .idle {
     background-color: yellow;
 }
@@ -19,14 +41,26 @@ body {
     transition: transform 500ms linear;
 }
 div#titleDiv {
-    padding-bottom: 10%;
+    /*padding-bottom: 2%;*/
 }
 div {
-    padding-top: 4%;
+    padding-top: 3%;
 }
 div.form {
     display: block;
     text-align: center;
+}
+a {
+    text-decoration: none;
+    
+}
+#screw img {
+    position: absolute;
+    top: 11.5%; /* Adjust this value to position vertically */
+    left: 50%; /* Adjust this value to position horizontally */
+    transform: translate(-50%, -50%);
+    max-width: 32px; /* Adjust the size as needed */
+    height: auto; /* Maintain aspect ratio */
 }
 button.centrat {
     font-family: monospace;
@@ -35,15 +69,29 @@ button.centrat {
     background-color: yellow;
     border-color: black;
     border-width: 0.2em;
-    display: block;
+    display: inline-block;
     margin-left: auto;
     margin-right: auto;
 }
 
-.final {
-    padding-top: 5%;
-    display: block;
-    text-align: center;
+div a {
+    text-align: center; /* Center the buttons */
+    display: block; /* Ensure each link takes full width */
+}
+
+#contentDiv {
+    line-height: 1.5em;
+    display: none;
+    color: white;
+    border-color: black;
+    border-width: 0.5em;
+    border-radius: 10%;
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1em;
+    margin-left: 20%;
+    margin-right: 20%;
+    
 }
 form {
     display: inline-block;
@@ -65,17 +113,41 @@ input.centrat {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
 
+/*ANIMATIONS TITLE*/
+#title.falling-down {
+    animation: fall-down-animation 0.7s ease-in-out forwards;
 }
-input#multiplicacioInput {
-    width: 20%;
-    text-align: center;
+#title.going-up {
+    animation: go-up-animation 0.7s ease-in-out forwards;
+}   
+
+@keyframes fall-down-animation {
+    from {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(70vh) translateX(var(--random-x)) rotate(var(--random-angle));
+    }
 }
-input#conditions {
-    height: 30px;
-    width: 30px;
+@keyframes go-up-animation {
+    from {
+        transform: translateY(70vh) translateX(var(--random-x)) rotate(var(--random-angle));
+    }
+    to {
+        transform: translateY(0) translateX(0) rotate(0deg);
+    }
 }
-input#showPasswd {
-    height: 30px;
-    width: 30px;
+.transition-all {
+    transition: all .5s ease-in;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    transition-delay: 0s;
+    transition-property: all;
+}
+
+/*ANIMATIONS SCREW*/
+#screwImg.screwing {
+    transform: translate(-50%, -50%) rotate(var(--screw-angle, 0deg));
 }

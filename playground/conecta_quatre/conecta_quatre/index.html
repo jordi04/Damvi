@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Connect 4</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>  
+        <h1 id="title">Welcome to Connect 4</h1>
+        <!--
+            <form name="usernameForm" onsubmit="validateForm()" onsubmit="return false" method="get">
+            <label for="username" id="username_input_text">Player 1 Username:</label><br>
+            <input type="text" id="username" name="username">
+            </form>
+        -->
+        <p id="turn">Yellow's turn</p>
+        <table>
+            <tr>
+                <td><button id='button50'onclick="buttons(0, 'button1')"></button></td>
+                <td><button id='button51'onclick="buttons(1, 'button2')"></button></td>
+                <td><button id='button52'onclick="buttons(2, 'button3')"></button></td>
+                <td><button id='button53'onclick="buttons(3, 'button4')"></button></td>
+                <td><button id='button54'onclick="buttons(4, 'button5')"></button></td>
+                <td><button id='button55'onclick="buttons(5, 'button6')"></button></td>
+                <td><button id='button56'onclick="buttons(6, 'button7')"></button></td>
+            </tr>
+            <tr>
+                <td><button id='button40'onclick="buttons(0, 'button1')"></button></td>
+                <td><button id='button41'onclick="buttons(1, 'button2')"></button></td>
+                <td><button id='button42'onclick="buttons(2, 'button3')"></button></td>
+                <td><button id='button43'onclick="buttons(3, 'button4')"></button></td>
+                <td><button id='button44'onclick="buttons(4, 'button5')"></button></td>
+                <td><button id='button45'onclick="buttons(5, 'button6')"></button></td>
+                <td><button id='button46'onclick="buttons(6, 'button7')"></button></td>
+            </tr>
+            <tr>
+                <td><button id='button30'onclick="buttons(0, 'button1')"></button></td>
+                <td><button id='button31'onclick="buttons(1, 'button2')"></button></td>
+                <td><button id='button32'onclick="buttons(2, 'button3')"></button></td>
+                <td><button id='button33'onclick="buttons(3, 'button4')"></button></td>
+                <td><button id='button34'onclick="buttons(4, 'button5')"></button></td>
+                <td><button id='button35'onclick="buttons(5, 'button6')"></button></td>
+                <td><button id='button36'onclick="buttons(6, 'button7')"></button></td>
+            </tr>
+            <tr>
+                <td><button id='button20'onclick="buttons(0, 'button1')"></button></td>
+                <td><button id='button21'onclick="buttons(1, 'button2')"></button></td>
+                <td><button id='button22'onclick="buttons(2, 'button3')"></button></td>
+                <td><button id='button23'onclick="buttons(3, 'button4')"></button></td>
+                <td><button id='button24'onclick="buttons(4, 'button5')"></button></td>
+                <td><button id='button25'onclick="buttons(5, 'button6')"></button></td>
+                <td><button id='button26'onclick="buttons(6, 'button7')"></button></td>
+            </tr>
+            <tr>
+                <td><button id='button10' onclick="buttons(0, 'button1')"></button></td>
+                <td><button id='button11' onclick="buttons(1, 'button2')"></button></td>
+                <td><button id='button12' onclick="buttons(2, 'button3')"></button></td>
+                <td><button id='button13' onclick="buttons(3, 'button4')"></button></td>
+                <td><button id='button14' onclick="buttons(4, 'button5')"></button></td>
+                <td><button id='button15' onclick="buttons(5, 'button6')"></button></td>
+                <td><button id='button16' onclick="buttons(6, 'button7')"></button></td>
+            </tr>
+            <tr>
+                <td><button id='button00' onclick="buttons(0, 'button1')"></button></td>
+                <td><button id='button01' onclick="buttons(1, 'button2')"></button></td>
+                <td><button id='button02' onclick="buttons(2, 'button3')"></button></td>
+                <td><button id='button03' onclick="buttons(3, 'button4')"></button></td>
+                <td><button id='button04' onclick="buttons(4, 'button5')"></button></td>
+                <td><button id='button05' onclick="buttons(5, 'button6')"></button></td>
+                <td><button id='button06' onclick="buttons(6, 'button7')"></button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><h3 id="player1_wins">Yellow wins: 0</h3></td>
+                <td></td>
+                <td><button id ="restart_button" onclick="restart()" class="restart">Rematch</button></td>
+                <td></td>
+                <td><h3 id="player2_wins">Red <br> wins: 0</h3></td>
+                <td></td>
+            </tr>
+        </table>
+        <script src='script.js'></script>
+</body>
+</html> 

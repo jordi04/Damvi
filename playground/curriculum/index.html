@@ -3,82 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jordi Roca Bonnin</title>
+    <title>CV Jordi</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        #title.falling-down {
-            animation: fall-down-animation 1.5s ease-in-out forwards;
-        }
-        #title.going-up {
-            animation: go-up-animation 1.5s ease-in-out forwards;
-        }   
-
-        @keyframes fall-down-animation {
-            from {
-                transform: translateY(0) translateX(0) rotate(0deg);
-            }
-            to {
-                transform: translateY(70vh) translateX(40vh) rotate(var(--random-angle));
-            }
-        }
-        @keyframes go-up-animation {
-            from {
-                transform: translateY(70vh) translateX(40vh) rotate(var(--random-angle));
-            }
-            to {
-                transform: translateY(0) translateX(0) rotate(0deg);
-            }
-        }
-    </style>
 </head>
-<body>
+<body class="customCursor">
     <div>
         <form>
             <div id="titleDiv">
-                <input type="button" id="title" onclick="titleClick()" value="Currículum Jordi Roca">
+                <input type="button" id="title" onclick="titleClick()" value="Currículum">
+                <picture hidden id="screw">
+                    <source media="(max-width: 64px)" srcset="screw.png">
+                    <img src="screw.png" alt="" id="screwImg" onclick="screwClick()" class="transition-all">
+                </picture>               
             </div>
+            <div id="contentDiv">
 
-            <div>
-                <input type="button" name="correu" class="centrat" value="Correu" onclick="enviaCorreu()">
-            </div>
-            <div>
-                <button type="button" name="github" class="centrat" onclick="github()">GitHub</button>
+                <p>Em dic Jordi, soc un estudiant de Desenvolupament d'Aplicacions Multiplataforma i Videojocs (DAMVI)
+                    a l'Institut Pedralbes. La meva principal motivació és l'aprenentatge autònom, i m'encanta 
+                    explorar noves àrees de coneixement.</p>
+    
+                    <p>Entre les meves passions, destaca la meva fascinació per l'univers dels videojocs. 
+                    La curiositat de comprendre com funcionen m'ha portat a explorar diverses tecnologies 
+                    i llenguatges de programació.</p>
+    
+                    <p>Estic profundament interessat en col·laborar amb vosaltres a través d'un programa de 
+                    Formació Professional Dual, ja que considero que aquesta és una oportunitat única per 
+                    enriquir la meva educació amb experiència pràctica.</p>
+                    <p class="destaca">Destaco per la meva habilitat autodidacta i la disposició a aprendre nous 
+                    llenguatges, frameworks i engines. També, tinc un nivell d'anglès avançat (B2).
+                    Tot i no tenir experiència laboral, estic familiaritzat amb un ampli ventall de tecnologies,
+                    que inclouen C++, Python, Java, JavaScript, C#, HTML, CSS, MySQL, nodejs i Unity, entre d'altres.</p>
+                                      
+    
+                    <p>El que més m'apassiona és treballar en projectes personals, on puc posar en pràctica 
+                    la meva creativitat i habilitats tècniques. Crec fermament en l'aprenentatge mitjançant 
+                    la pràctica i estic emocionat per aportar la meva passió i dedicació al món laboral.
+                    </p>
+                    
+                    <p>Estic ansiós per l'oportunitat de contribuir al vostre equip i aprendre de professionals 
+                    experimentats. Gràcies per considerar la meva sol·licitud.</p>    
+
+                <div style="margin-bottom: 10%;">
+                    <a href="mailto:jordiroca04@gmail.com" target="_blank">
+                        <button type="button" name="correu" class="centrat" onclick="copyToClipboard('jordiroca04@gmail.com')">Copiar Email</button>
+                    </a>
+                </div>
+                <!--<div>
+                    <a href="https://github.com/apellido04" target="_blank">
+                        <button type="button" name="github" class="centrat">GitHub</button>
+                    </a>
+                </div>
+                -->
             </div>
         </form>
     </div>
 
-    <script src="script.js"></script>
-
-    <script>
-        const title = document.getElementById('title');
-        let isFallingDown = true;
-        let isGoingUp = false;
-
-        function titleClick() {
-            // Generate a random angle and set it as a CSS variable
-            document.documentElement.style.setProperty('--random-angle', `${getRandomAngle()}deg`);
-
-            // Add or remove the 'falling-down' class based on the state
-            if (isFallingDown) {
-                title.classList.add('falling-down');
-            } else {
-                title.classList.remove('falling-down');
-            }
-            if (isGoingUp) {
-                title.classList.add('going-up');
-            } else {
-                title.classList.remove('going-up');
-            }
-
-            // Toggle the state for the next click
-            isFallingDown = !isFallingDown;
-            isGoingUp = !isGoingUp;
-        }
-
-        function getRandomAngle() {
-            // Generate a random angle between -45 and 45 degrees
-            return Math.floor(Math.random() * 90) - 45;
-        }
-    </script>
+    <script src="script.js"></script>   
 </body>
 </html>
