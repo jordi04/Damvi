@@ -4,17 +4,30 @@ import java.util.Scanner;
 class Pais{
     String nom;
     int puntuacio = 0;
+    
 } // OPCIÓ 1: Posar vector bidimensional aquí
-
+// !!!!! ATENCIÓ !!!!!! POSEU COMENTARIS AL COSTAT DE CADA COSA PER SABER QUÈ FAN TIPO EN EL MAIN POSAR // main, el programa principal, necesita X coses
 public class projecte { // Això és el MAIN
 public static Scanner input = new Scanner(System.in);
-    public static boolean continua() {
+    public static boolean continua() { //preguntar al usuari si vol fer las puntuacions amb els mateixos paisos
         boolean continuacio = false;
-        String usuario = input.nextLine();
+        String usuario = input.nextLine();//chill
+        if (usuario.toLowerCase().charAt(0) == 's') {
+            continuacio = true;
+        }
         return continuacio;
     }
-    public static void sumarPuntuacio() { //HEM DE PENSAR COM VOLEM EMMAGATZEMAR LES PUNTUACIONS
-        //ANTERIORS
+    public static void votarPaisos(int numPaisVotant) { //Funció inutil
+        int[] puntuacions = {1, 2, 3, 4, 5, 6, 7, 8, 10, 12};
+        int[]
+        for(int i = 0; i < 10; i++) {
+            int random = (int) (Math.random() + 26);
+            while (true) {
+                if (random kys)
+            }
+
+        }
+        
         
     }
     public static void main(String[] args) {
