@@ -11,13 +11,9 @@ class Pais{
      
 } // OPCIÓ 1: Posar vector bidimensional aquí
 
-class Any{
-    int any;
-    int[] puntuacio;
-}
 // !!!!! ATENCIÓ !!!!!! POSEU COMENTARIS AL COSTAT DE CADA COSA PER SABER QUÈ FAN TIPO EN EL MAIN POSAR // main, el programa principal, necesita X coses
 
-public class projecte { // Això és el MAIN
+public class projecteEurovision { // Això és el MAIN
     public static boolean continua() { //preguntar al usuari si vol volver a fer las puntuacions amb els mateixos paisos
         Scanner input = new Scanner(System.in); //L'he convertit en local, m'han dit que en segundo ho prefereix
         boolean continuacio = false;
@@ -37,46 +33,57 @@ public class projecte { // Això és el MAIN
         }
     }
 
-    public static void votarRandom(Pais paisVotant, Pais[] paissos){ // Fa que un païs voti a tots els altres.
+    public static void votarRandom(Pais paisVotant, int n_paisvotant, final int N_VOTS){ // Fa que un païs voti a tots els altres.
         int i, j, pais_random;
         boolean ja_votat, vot_fet;
-        for (i = 0; i < 10; i++){
+        for (i = 0; i < N_VOTS; i++){
             ja_votat = false;
             vot_fet = false;
-             do {
-                pais_random = (int)(Math.random()*26)+1;
-                for (j = 0; j < 10; j++){
-                    if (paisVotant.votacions[1][j] != -1){
+            do {
+                pais_random = (int)(Math.random()*26);
+                System.out.println(pais_random + " pais random");
+                for (j = 0; j < N_VOTS; j++){ // Comprova que encara quedin vots
+                    if ((paisVotant.votacions[j][1] == pais_random) || (paisVotant.votacions[j][1] == n_paisvotant)){  // Breakpoint, el punt on trenca, el més Over Broken, Brrrr
                         ja_votat = true;
                     }
                 }
                 if (!ja_votat){
                     paisVotant.votacions[i][1] = pais_random; //jr he canviat [1][i] per [i][1] 
-                    // Aquí poso la quantitat votada.
+                    // La votació de I punts va cap a el pais random.
+                    vot_fet = true;
                 }
-
             } while (!vot_fet);
-        }
+        } 
     }
     
     public static void main(String[] args) {
-        final int N_PAISSOS = 26;
-        
+        final int N_PAISSOS = 26, N_VOTS = 10;
+        int numEdicio = 0;
         Pais[] paissos = new Pais[N_PAISSOS];
-        
+
+        //Matriu per guardar l'historial de totes les edicions de Eurovisió anteriors
+        ArrayList<ArrayList<Integer>> historialPuntuacions = new ArrayList<>();
         //Inserir noms país  
         String[] nomsPaissos = {"Albània", "Alemanya", "Armènia", "Austràlia", "Àustria", "l'Azerbaidjan", "Bèlgica", "Xipre", "Croàcia", "República Txeca", "Dinamarca", "Eslovènia", "Espanya", "Estònia", "Finlàndia", "França", "Geòrgia", "Grècia", "Irlanda", "Islàndia", "Palestina", "Itàlia", "Letònia", "Lituània", "Malta", "Moldàvia"}; 
-        
+        for (int i = 0; i < 26; i++) {
+            Pais pais_aux = new Pais();
+            pais_aux.nom = nomsPaissos[i];
+            paissos[i] = pais_aux;
+        }
         //Aquí comença el loop
         do {
             //sumar any
+            numEdicio++;
 
             for (int i = 0; i < N_PAISSOS; i++) {
                 System.out.printf("Es el torn de %s ", paissos[i].nom);
 
                 //Pas 1: (Torn d'un país) seleccionar aleatoriament les puntuacions 
-                votarRandom(paissos[i], paissos);
-                
+                votarRandom(paissos[i], i, N_VOTS);
+                System.out.println("cum");
+                for (int j = 0; j < N_VOTS; j++){
+                    System.out.printf("%s ha votat a %s amb %d punts", nomsPaissos[i], nomsPaissos[paissos[i].votacions[1][i]], paissos[i].votacions[0][i]);
+                }
                 //repetir 26 vegades
             }
             //Pas 2
@@ -84,6 +91,9 @@ public class projecte { // Això és el MAIN
                 recompteVots(paissos[i], paissos);
             }
             //Emmagatzemar dades matriu
+            for (int i = 0; i < N_PAISSOS; i++) {
+                historialPuntuacions.get(numEdicio).add(paissos[i].puntuacio);
+            }
 
         } while (continua());
     
