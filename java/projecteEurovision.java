@@ -33,27 +33,31 @@ public class projecteEurovision { // Això és el MAIN
         }
     }
 
-    public static void votarRandom(Pais paisVotant, int n_paisvotant, final int N_VOTS){ // Fa que un païs voti a tots els altres.
+    public static void votarRandom(Pais paisVotant, int n_paisvotant, final int N_VOTS) {
         int i, j, pais_random;
         boolean ja_votat, vot_fet;
-        for (i = 0; i < N_VOTS; i++){
+        for (i = 0; i < N_VOTS; i++) {
             ja_votat = false;
             vot_fet = false;
-            do {
-                pais_random = (int)(Math.random()*26);
+            while (!vot_fet) { //per realitzar 1 vot
+                pais_random = (int) (Math.random() * 26);
                 System.out.println(pais_random + " pais random");
-                for (j = 0; j < N_VOTS; j++){ // Comprova que encara quedin vots
-                    if ((paisVotant.votacions[j][1] == pais_random) || (paisVotant.votacions[j][1] == n_paisvotant)){  // Breakpoint, el punt on trenca, el més Over Broken, Brrrr
+
+                for (j = 0; j < N_VOTS; j++) {
+                    if ((paisVotant.votacions[j][1] == pais_random) || (paisVotant.votacions[j][1] == n_paisvotant)) {
                         ja_votat = true;
+                        System.out.println("Ja votat or " + paisVotant.votacions[j][1] + " és igual a " + pais_random + " o " + n_paisvotant);
+                        System.out.println(ja_votat);
                     }
                 }
-                if (!ja_votat){
-                    paisVotant.votacions[i][1] = pais_random; //jr he canviat [1][i] per [i][1] 
-                    // La votació de I punts va cap a el pais random.
+
+                if (!ja_votat) {
+                    paisVotant.votacions[i][1] = pais_random;
+                    System.out.println("Ha votat: " + paisVotant.votacions[i][1]);
                     vot_fet = true;
                 }
-            } while (!vot_fet);
-        } 
+            }
+        }
     }
     
     public static void main(String[] args) {
@@ -75,17 +79,23 @@ public class projecteEurovision { // Això és el MAIN
             //sumar any
             numEdicio++;
 
-            for (int i = 0; i < N_PAISSOS; i++) {
+            historialPuntuacions.add(new ArrayList<>());
+            votarRandom(paissos[2], 2, N_VOTS);
+            
+            /*for (int i = 0; i < N_PAISSOS; i++) {
                 System.out.printf("Es el torn de %s ", paissos[i].nom);
 
                 //Pas 1: (Torn d'un país) seleccionar aleatoriament les puntuacions 
                 votarRandom(paissos[i], i, N_VOTS);
+                //no passa d'aquí
                 System.out.println("cum");
                 for (int j = 0; j < N_VOTS; j++){
                     System.out.printf("%s ha votat a %s amb %d punts", nomsPaissos[i], nomsPaissos[paissos[i].votacions[1][i]], paissos[i].votacions[0][i]);
+
                 }
+                System.out.println();
                 //repetir 26 vegades
-            }
+            }*/
             //Pas 2
             for (int i = 0; i < N_PAISSOS; i++) { //Sumam totes les votacions dels paissos
                 recompteVots(paissos[i], paissos);
