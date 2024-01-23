@@ -8,7 +8,7 @@ class Pais{
 
     //matriu de les puntuacions i al país al qui ha votat cada puntuació
     int[][] votacions = {{1, -1}, {2, -1}, {3, -1}, {4, -1}, {5, -1}, {6, -1}, {7, -1}, {8, -1}, {10, -1}, {12, -1}};
-     
+    
 }
 
 public class projecteEurovision { // Això és la classe MAIN
