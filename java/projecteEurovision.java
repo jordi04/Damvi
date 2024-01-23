@@ -49,9 +49,9 @@ public class projecteEurovision { // Això és la classe MAIN
         
         while (continuar){      
             System.out.println();
-
-            System.out.printf("----Benvingut a Eurovisió, selecciona una opció---- \n1. Llista dels paisos de millor a pitjor\n2. Historial de puntuacions dels paissos de totes les edicions\n3. Per afegir un any nou\n" + //
-                    "4. Mostrar les votacions que ha fet un país a la darrera edició\n5. Mostrar tots els votants d'un país a la darrera edició\n0. Sortir \n");
+            System.out.printf("o\33c ----Benvingut a Eurovisió, selecciona una opció---- \n1. Llista dels paisos de millor a pitjor\n2. Historial de puntuacions dels paissos de totes les edicions\n3. Per afegir un any nou\n" + //
+                    "4. Mostrar les votacions que ha fet un país a la darrera edició\n5. Mostrar tots els votants d'un país a la darrera edició\n" + //
+                    "6. Mostrar puntuacions i posicions anteriors d'un país\n0. Sortir \n");
             opcio = input.nextInt();
             
             switch (opcio){
@@ -74,7 +74,17 @@ public class projecteEurovision { // Això és la classe MAIN
                     rankingPaissosDarreraEdicio(paissos);
                     mostrarVotantsPais(paissos);
                     break;
-                case 6:
+
+                case 6: 
+                    rankingPaissosDarreraEdicio(paissos);
+                    int paisSeleccionat = seleccionaUnPais();
+                    mostrarPuntuacionsAnteriorsPais(paisSeleccionat, historialPuntuacions, paissos);
+                    break;
+                case 7:
+                    //mostrar els paissos que més vegades han guanyat
+                    //mostrar els paissos que més punts han aconseguit
+                    //de totes les edicions
+                case 8:
                     for (int i = 0; i < paissos.length; i++){
                         System.out.println(paissos[i].nom);
                     }
@@ -85,6 +95,7 @@ public class projecteEurovision { // Això és la classe MAIN
                         System.out.println(paissosOrdenats[i].nom);
                     }
                     break;
+                
                 case 0: // Sortir
                     System.out.println("S'ha seleccionat sortir.");
                     continuar = false;
@@ -123,14 +134,12 @@ public class projecteEurovision { // Això és la classe MAIN
     }
 
 
-
-
-
-
-
-
-
-
+    public static int seleccionaUnPais() {
+        Scanner input = new Scanner(System.in);
+        System.out.print("Selecciona el número d'un país per veure les seves anteriors puntuacions: ");
+        return input.nextInt() -1;
+    }
+    
 
     public static void nextAny(Integer numEdicio, int N_PAISSOS, int N_VOTS, boolean ordenat, ArrayList<ArrayList<Pais>> historialPuntuacions, Pais[] paissos, Pais[] paissosOrdenats, String[] nomsPaissos) { 
         Scanner input = new Scanner(System.in); 
@@ -291,6 +300,23 @@ public static void printHistorial(ArrayList<ArrayList<Pais>> historialPuntuacion
             System.out.println("Selecció no vàlida.");
         }
     }
+    
+    public static void mostrarPuntuacionsAnteriorsPais(int paisSeleccionat, ArrayList<ArrayList<Pais>> historialPuntuacions, Pais[] paissos) {
+        
+        for (int i = 0; i < paissos[i].puntuacions.size()-1; i++) {
+            System.out.println();
+            boolean found = false;
+            int j = 0;
+            while (!found) {
+                if (historialPuntuacions.get(i).get(j).nom == paissos[paisSeleccionat].nom) {
+                    System.out.println("Edició "+ (i+1) + ":\n" + "Puntuació: "+ paissos[i].puntuacions.get(i) + "\nPosició: " + (j+1) + " de " + historialPuntuacions.get(i).size());
+                    found = true;
+                }
+                j++;
+            }
+        }
+    }
+
 } 
 
 
