@@ -2,12 +2,12 @@ async function f(){
 
     let mysql = require("mysql");
     
-    let connection = mysql.createConnection({
-        host:"localhost",
-        database:"async_await",
-        user:"root",
-        password:""
-    });
+    const configConnexio = {
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "async_await"
+};
     
     connection.connect(function(err){
         if(err){

@@ -50,22 +50,19 @@ public class projecteEurovision { // Això és la classe MAIN
         
         while (continuar){      
             System.out.println();
-            System.out.printf("o\33c ----Benvingut a Eurovisió, selecciona una opció---- \n1. Llista dels paisos de millor a pitjor\n2. Historial de puntuacions dels paissos de totes les edicions\n3. Per afegir un any nou\n" + //
-                    "4. Mostrar les votacions que ha fet un país a la darrera edició\n5. Mostrar tots els votants d'un país a la darrera edició\n" +
-                    "6. Mostrar puntuacions i posicions anteriors d'un país\n7. Mostra els païssos amb millor puntuació històrica i el país que més ha guanyat\n" + // 
-                    "\n0. Sortir \n");
+            //o\33c
+            System.out.printf(" ----Benvingut a Eurovisió, selecciona una opció---- \n1. Llista dels paisos de millor a pitjor\n2. Historial de puntuacions dels paissos de totes les edicions\n3. Per afegir un any nou\n" + //
+                    "4. Mostrar les votacions que ha fet un país a la darrera edició\n5. Mostrar tots els votants d'un país a la darrera edició\n" + //
+                    "6. Mostrar puntuacions i posicions anteriors d'un país\n0. Sortir \n");
             opcio = input.nextInt();
             
             switch (opcio){
-                /* ESTILITZAT */
                 case 1: // Escull un país i et mostra a quí ha votat A LA DARRERA EDICIÓ
                     rankingPaissosDarreraEdicio(paissosOrdenats);
                     break;
-                /* ESTILITZAT */
                 case 2: // Fa un print de totes les puntuacions de totes les edicions
                     printHistorial(historialPuntuacions, numEdicio, paissosOrdenats);
                     break;
-                /* ESTILITZAT */
                 case 3: // Afegir una nova edició amb totes les dades
                     nextAny(numEdicio, N_PAISSOS,  N_VOTS, ordenat, historialPuntuacions, paissos , paissosOrdenats, nomsPaissos);
                     numEdicio++;
@@ -89,6 +86,16 @@ public class projecteEurovision { // Això és la classe MAIN
                     //mostrar els paissos que més vegades han guanyat
                     //mostrar els paissos que més punts han aconseguit de totes les edicions ivvan es totntu
                     millorsPaissos(paissos, historialPuntuacions);
+                case 8:
+                    for (int i = 0; i < paissos.length; i++){
+                        System.out.println(paissos[i].nom);
+                    }
+
+                    System.out.println("Ordenats \n");
+
+                    for (int i = 0; i < paissosOrdenats.length; i++){
+                        System.out.println(paissosOrdenats[i].nom);
+                    }
                     break;
                 
                 case 0: // Sortir
@@ -97,9 +104,9 @@ public class projecteEurovision { // Això és la classe MAIN
                     break;
                 default: 
                     System.out.printf("Opció no vàlida.");
-            }
+            }a
             if (continuar) {
-                System.out.printf("\nPress Enter to continue ↵\n");
+                System.out.printf("\nPress Enter to continue \n☞ຈل͜ຈ)☞");
                 if (input.hasNextLine()) {
                     input.nextLine(); // Consume the input
                 }
@@ -116,43 +123,17 @@ public class projecteEurovision { // Això és la classe MAIN
     }
 
     public static void millorsPaissos(Pais[] paissos, ArrayList<ArrayList<Pais>> historialPuntuacions) {
-        int paisIndexPuntuacioMesAlta = 0, paisIndexMesGuanyador = 0;
-        int sumaPuntuacionsMesAlta = 0, mesVegadesGuanyador = 0;
-        int sumaPuntuacions = 0;
-        int vegadesGuanyador = 0;
-        for (int i = 0; i < paissos[i].puntuacions.size()-1; i++) { //itera les edicions
-            sumaPuntuacions = 0;
-            vegadesGuanyador = 0;
-            for (int indexPais = 0; indexPais < paissos.length; indexPais++) {
-                boolean found = false;
-                int j = -1;
-                while (!found) {
-                    j++;
-                    if (historialPuntuacions.get(i).get(j).nom == paissos[indexPais].nom) {
-                        found = true;
-                    }
+        //top 5
+        
+        for (int paisIndex = 0; paisIndex < paissos.length; paisIndex++) { //itera pels païssos
+            for (int i = 0; i < historialPuntuacions.size(); i++) { //itera les edicions
+                for (int j = 0; j < historialPuntuacions.get(i).size(); j++) { //itera els resultats dels paissos de cada edició
+                    
                 }
-                sumaPuntuacions += historialPuntuacions.get(i).get(j).puntuacions.get(i);
-                
-                if (j == 0) vegadesGuanyador++;
-                System.out.println(sumaPuntuacions + " cum " + vegadesGuanyador);
-            }
-
-            if (sumaPuntuacions > sumaPuntuacionsMesAlta) { //Asigna el nou país amb la puntuació més alta
-                sumaPuntuacionsMesAlta = sumaPuntuacions;
-                paisIndexPuntuacioMesAlta = i;
-            }
-            
-            if (vegadesGuanyador > mesVegadesGuanyador) { //Asigna el nou país que més vegades ha guanyat
-                mesVegadesGuanyador = vegadesGuanyador;
-                paisIndexMesGuanyador = i;
             }
         }
-        System.out.println("El país que ha guanyat més cops ha estat: " +  paissos[paisIndexMesGuanyador].nom + //
-        "\n\nEl país amb la puntuació més alta al llarg de totes les edicions és: " + paissos[paisIndexMesGuanyador].nom + 
-        " amb " + mesVegadesGuanyador + " punts en total");
+            
     }
-
     public static int seleccionaUnPais() {
         Scanner input = new Scanner(System.in);
         System.out.print("Selecciona el número d'un país per veure les seves anteriors puntuacions: ");
@@ -186,8 +167,8 @@ public class projecteEurovision { // Això és la classe MAIN
             printHistorial(historialPuntuacions, numEdicio, paissosOrdenats);
     }
 
+
     //AMPLIACIÓ 1
-    // Desempata en ordenar punts, per si tenen el mateix número de punts que hi hagi un guanyador fixe
     // Desempata en ordenar punts, per si tenen el mateix número de punts que hi hagi un guanyador fixe
     public static boolean desempatGuanya(int numPais1, final int N_PAISSOS, Integer numEdicio, Pais[] paissosOrdenats){
         boolean guanyanumPais = false, ordenat = false; 
@@ -249,8 +230,6 @@ public class projecteEurovision { // Això és la classe MAIN
         guanyanumPais = false;
         return guanyanumPais;
     }
-
-
     
     //Ordena els paissos per puntuacions al vector paissos
     public static void ordenarPunts(final int N_PAISSOS, Integer numEdicio, Pais[] paissosOrdenats){
@@ -268,7 +247,7 @@ public class projecteEurovision { // Això és la classe MAIN
                     ordenat = false;
                 }
                 else if (paissosOrdenats[j].puntuacions.get(numEdicio) == paissosOrdenats[j+1].puntuacions.get(numEdicio)){
-                    if (desempatGuanya(j, N_PAISSOS, numEdicio, paissosOrdenats)){ //Si hi ha triple empat tenim problema
+                    if (desempatGuanya(j, N_PAISSOS, numEdicio, paissosOrdenats)){ // NO AMB EL IF DE A DALT PER QUE SINO POT SER QUE ES COMPROVI TOT EL RATO SI HI HA DESEMPAT? I NO CAL!
                         paisAux = paissosOrdenats[j];
                         paissosOrdenats[j] = paissosOrdenats[j+1];
                         paissosOrdenats[j+1] = paisAux; 
@@ -317,50 +296,42 @@ public class projecteEurovision { // Això és la classe MAIN
 
     public static void printHistorial(ArrayList<ArrayList<Pais>> historialPuntuacions, Integer numEdicio, Pais[] paissosOrdenats) {
         System.out.println("Històric de votacions:");
-        
-        
+
         for (int i = 0; i < historialPuntuacions.size(); i++) {
-            System.out.printf("\t              --------EUROVISIÓ EDICIÓ %d--------\n", i + 1);
+            System.out.printf("EUROVISIÓ EDICIÓ %d\n", i + 1);
 
             // Ordenar puntuaciones antes de mostrarlas
             ordenarPunts(paissosOrdenats.length, i, paissosOrdenats);
-            System.out.printf("\t _______________________________________________________________\n");
-            for (int j = 0; j < paissosOrdenats.length-13; j++) { // -13 perquè és la meitat i així no hem de fer (int) / 2...
+
+            for (int j = 0; j < paissosOrdenats.length; j++) {
                 Pais pais = paissosOrdenats[j];
-                Pais pais2 = paissosOrdenats[j+13]; // +13 per fer la segona columna
-                System.out.printf("\t| %-18s: %3d punts | %-18s: %3d punts |\n", pais.nom, pais.puntuacions.get(i), pais2.nom, pais2.puntuacions.get(i));
-                System.out.printf("\t|_______________________________|_______________________________|\n");
+                System.out.printf("%s: %d vots\n", pais.nom, pais.puntuacions.get(i));
             }
-            
+
             System.out.println();
         }
     }
 
-
     //Case 1 del menú, imprimeix el ranking dels paissos de la darrera edició, també s'utilitza al Case 4,
     public static void rankingPaissosDarreraEdicio(Pais[] paissos) {
-       int nyu = 13;
-       System.out.printf("\t          --------Paissos i els seus vots--------\n");
-       System.out.printf("\t _________________________________________________\n");
-        for (int i = 0; i < paissos.length-13; i++) {
-            System.out.printf("\t| %2d. %-18s | %2d. %-18s |\n", i + 1, paissos[i].nom, nyu + 1, paissos[nyu].nom);
-            System.out.printf("\t|________________________|________________________|\n");
-            nyu++;
+        
+        
+        System.out.println("Paissos i els seus vots:");
+        for (int i = 0; i < paissos.length; i++) {
+            System.out.printf("%d. %s\n", i + 1, paissos[i].nom);
         }
-
     }
 
     //Case 4 del menú, imprimeix tots els 10 paissos que un país ha votat
     public static void mostrarVotsPerPais(Pais[] paissos) {
         Scanner input = new Scanner(System.in);
-        
         int paisSeleccionat, puntuacio, votsIndex;
         String nomPaisVotat = "";
         System.out.print("Selecciona el número d'un país per veure els seus vots: ");
         paisSeleccionat = input.nextInt() -1;
     
         if ((paisSeleccionat >= 0) && (paisSeleccionat < paissos.length)) { 
-            System.out.printf("\t Vots de %s:\n", paissos[paisSeleccionat].nom);
+            System.out.printf("Vots de %s:\n", paissos[paisSeleccionat].nom);
             System.out.printf("\t DARRERA EDICIÓ\n");
             for (int i = 0; i < paissos[paisSeleccionat].votacions.length; i++) {
                 votsIndex = paissos[paisSeleccionat].votacions[i][1];
