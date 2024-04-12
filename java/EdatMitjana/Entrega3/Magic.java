@@ -2,8 +2,8 @@ public class Magic extends Personatge {
     private String encanteri;
 
     //Constructor
-    public Magic(String nom, int vida, int nivellDinsDelLloc, String encanteri) {
-        super(nom, vida, nivellDinsDelLloc);
+    public Magic(String nom, int vida, int nivell, String encanteri) {
+        super(nom, vida, nivell);
         this.encanteri = encanteri;
     }
 

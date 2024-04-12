@@ -25,19 +25,19 @@ public class Personatge {
         this.nom = nom;
     }
 
-    public int getvida() {
+    public int getVida() {
         return vida;
     }
 
-    public void setvida(int vida) {
+    public void setVida(int vida) {
         this.vida = vida;
     }
 
-    public int getnivell() {
+    public int getNivell() {
         return nivell;
     }
 
-    public void setnivell(int nivell) {
+    public void setNivell(int nivell) {
         this.nivell = nivell;
     }
 

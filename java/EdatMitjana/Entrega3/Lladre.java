@@ -2,8 +2,8 @@ public class Lladre extends Personatge {
     private boolean sigil;
 
     //Constructor
-    public Lladre(String nom, int vida, int nivellDinsDelLloc, boolean sigil) {
-        super(nom, vida, nivellDinsDelLloc);
+    public Lladre(String nom, int vida, int nivell, boolean sigil) {
+        super(nom, vida, nivell);
         this.sigil = sigil;
     }
 

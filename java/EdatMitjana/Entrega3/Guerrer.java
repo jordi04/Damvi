@@ -3,8 +3,8 @@ public class Guerrer extends Personatge {
     private String arma;
 
     //Constructor
-    public Guerrer(String nom, int vida, int nivellDinsDelLloc, String arma) {
-        super(nom, vida, nivellDinsDelLloc);
+    public Guerrer(String nom, int vida, int nivell, String arma) {
+        super(nom, vida, nivell);
         this.arma = arma;
     }
 

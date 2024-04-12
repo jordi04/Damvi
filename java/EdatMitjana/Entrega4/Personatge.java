@@ -1,5 +1,3 @@
-//Actualització de Personatge.java per incloure un objecte Inventari
-
 public class Personatge {
     private String nom;
     private int vida;
@@ -13,7 +11,7 @@ public class Personatge {
         this.nivell = nivell;
         this.inventari = new Inventari();
     }
-
+    
     //Setters i getters
     public String getNom() {
         return nom;

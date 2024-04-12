@@ -1,4 +1,3 @@
-//Guerrer.java
 public class Guerrer extends Personatge {
     private String arma;
 

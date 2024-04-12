@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Personatge {
     private String nom;
     private int vida;
-    private int nivellDinsDelLloc;
+    private int nivell;
     private ArrayList<Objecte> objectes;
 
     //Constructor
-    public Personatge(String nom, int vida, int nivellDinsDelLloc) {
+    public Personatge(String nom, int vida, int nivell) {
         this.nom = nom;
         this.vida = vida;
-        this.nivellDinsDelLloc = nivellDinsDelLloc;
+        this.nivell = nivell;
         this.objectes = new ArrayList<>();
     }
 
@@ -23,20 +23,20 @@ public class Personatge {
         this.nom = nom;
     }
 
-    public int getvida() {
+    public int getVida() {
         return vida;
     }
 
-    public void setvida(int vida) {
+    public void setVida(int vida) {
         this.vida = vida;
     }
 
-    public int getNivellDinsDelLloc() {
-        return nivellDinsDelLloc;
+    public int getNivell() {
+        return nivell;
     }
 
-    public void setNivellDinsDelLloc(int nivellDinsDelLloc) {
-        this.nivellDinsDelLloc = nivellDinsDelLloc;
+    public void setNivell(int nivell) {
+        this.nivell = nivell;
     }
 
     //Mètodes per afegir i eliminar objectes
@@ -64,7 +64,7 @@ public class Personatge {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Personatge: ").append(nom).append("\n");
         stringBuilder.append("Grau de salut: ").append(vida).append("\n");
-        stringBuilder.append("Nivell dins del lloc: ").append(nivellDinsDelLloc).append("\n");
+        stringBuilder.append("Nivell: ").append(nivell).append("\n");
         stringBuilder.append("Objectes: \n");
         for (Objecte obj : objectes) {
             stringBuilder.append(obj).append("\n");
