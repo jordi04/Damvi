@@ -24,8 +24,6 @@ public class Jugador implements Serializable {
     }
 
 
-    
-
     public String getNickname() {
         return nickname;
     }
@@ -77,6 +75,12 @@ public class Jugador implements Serializable {
     //altres
     @Override
     public String toString() {
-        return "";
+
+        String habilitatsString = "";
+
+        for (int i = 0; i < habilitats.size(); i++) {
+            habilitatsString += habilitats.get(i).toString() + "\n ";
+        }
+        return " Nickname = " + nickname + "\n Nom Jugador = " + nomJugador + "\n Edat = "+ edat + "\n Rol = " + rol + "\n Habilitats = " + habilitatsString + "Puntuació ELO = " + puntsElo;
     }
 }

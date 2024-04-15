@@ -6,6 +6,7 @@ public class Estrategia {
     public Estrategia() {
 
     }
+    
     public Estrategia(String nomEstrategia, String descr) {
         this.nomEstrategia = nomEstrategia;
         this.descr = descr;
@@ -25,6 +26,11 @@ public class Estrategia {
     
     public void setDescr(String descr) {
         this.descr = descr;
+    }
+
+    @Override
+    public String toString(){
+        return "Nom de Estrategia: " + nomEstrategia + "\nDescripción de la estrategia: " + descr;
     }
 
 }
