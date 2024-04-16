@@ -167,7 +167,7 @@ public class Main {
                                             System.out.print("Introdueix el número d'equip: ");
                                             equipSeleccionat = inputConsole.nextInt();
                                             seleccionant = false;
-                                            System.out.println(equipsAux.get(equipSeleccionat-1));
+                                            
                                         }
                                         catch (Exception e){
                                             System.out.println("El numero que has inserit no correspon a un equip");
