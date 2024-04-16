@@ -1,4 +1,7 @@
-public class Estrategia {
+import java.io.Serializable;
+
+public class Estrategia implements Serializable {
+    private static final long serialVersionUID = 1L;
     String nomEstrategia;
     String descr;
 
@@ -30,7 +33,7 @@ public class Estrategia {
 
     @Override
     public String toString(){
-        return "Nom de Estrategia: " + nomEstrategia + "\nDescripción de la estrategia: " + descr;
+        return " Nom de Estrategia: " + nomEstrategia + "\n Descripción de la estrategia: " + descr;
     }
 
 }

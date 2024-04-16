@@ -47,6 +47,10 @@ public class Equip implements Serializable {
         for (int i = 0; i < membres.size(); i++) {
             aux += "\n Jugador " + (i+1) + "\n" + membres.get(i).toString() + "\n";
         }
+        for (int i = 0; i < estrategia.size(); i++) {
+            aux += "\n Estratègia " + (i+1) + "\n" + estrategia.get(i).toString() + "\n";
+
+        }
         return aux;
     }
 }
