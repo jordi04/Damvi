@@ -4,18 +4,24 @@ import java.util.ArrayList;
 public class Equip implements Serializable {
     private static final long serialVersionUID = 1L;
     String nomEquip;
-    ArrayList <Estrategia> estrategia = new ArrayList<Estrategia>();
-    ArrayList <Jugador> membres = new ArrayList<Jugador>();
+    //ArrayList <Estrategia> estrategia = new ArrayList<Estrategia>();
+    ArrayList<String> nomEstrategies = new ArrayList<String>();
+    ArrayList<String> nomMembres = new ArrayList<String>();
+    //ArrayList <Jugador> membres = new ArrayList<Jugador>();
 
     public Equip() {
 
     }
 
-    public Equip(String nomEquip, ArrayList<Estrategia> estrategia, ArrayList<Jugador> membres) {
+    public Equip(String nomEquip, ArrayList<String> nomEstrategies, ArrayList<String> nomMembres) {
         this.nomEquip = nomEquip;
-        this.estrategia = estrategia;
-        this.membres = membres;
+        this.nomEstrategies = nomEstrategies;
+        this.nomMembres = nomMembres;
     }
+
+    /*
+     Falta eliminar de equip els membres i només deixar la string del seu nom
+    */
 
     public String getNomEquip() {
         return nomEquip;
@@ -25,30 +31,30 @@ public class Equip implements Serializable {
         this.nomEquip = nomEquip;
     }
 
-    public ArrayList<Estrategia> getEstrategia() {
-        return estrategia;
+    public ArrayList<String> getEstrategia() {
+        return nomEstrategies;
     }
 
-    public void setEstrategia(ArrayList<Estrategia> estrategia) {
-        this.estrategia = estrategia;
+    public void setEstrategia(ArrayList<String> nomEstrategies) {
+        this.nomEstrategies = nomEstrategies;
     }
 
-    public ArrayList<Jugador> getMembres() {
-        return membres;
+    public ArrayList<String> getMembres() {
+        return nomMembres;
     }
 
-    public void setMembres(ArrayList<Jugador> membres) {
-        this.membres = membres;
+    public void setMembres(ArrayList<String> nomMembres) {
+        this.nomMembres = nomMembres;
     }
     
     @Override
     public String toString() {
         String aux = nomEquip;
-        for (int i = 0; i < membres.size(); i++) {
-            aux += "\n Jugador " + (i+1) + "\n" + membres.get(i).toString() + "\n";
+        for (int i = 0; i < nomMembres.size(); i++) {
+            aux += "\n Jugador " + (i+1) + "\n" + nomMembres.get(i).toString() + "\n";
         }
-        for (int i = 0; i < estrategia.size(); i++) {
-            aux += "\n Estratègia " + (i+1) + "\n" + estrategia.get(i).toString() + "\n";
+        for (int i = 0; i < nomEstrategies.size(); i++) {
+            aux += "\n Estratègia " + (i+1) + "\n" + nomEstrategies.get(i).toString() + "\n";
 
         }
         return aux;

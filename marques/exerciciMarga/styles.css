@@ -1,0 +1,137 @@
+body {
+   font-family: Arial, sans-serif;
+   text-align: left;
+   background-color: white;
+   margin: 0;
+   padding: 0;
+}
+
+.estat-civil-label {
+   text-align: center;
+   background-color: #0901a2; 
+   color: #ffffff;
+   padding: 5px 10px; 
+   border-radius: 5px; 
+   width: 20%; 
+   margin-left: 10px; 
+   margin-right: 10px; 
+}
+.experiencia-laboral-label {
+   text-align: center;
+   background-color: #0901a2; 
+   color: #ffffff; 
+   padding: 5px 10px; 
+   border-radius: 5px; 
+   margin-bottom: 10px; 
+   width: 40%; 
+   margin-left: 10px; 
+   margin-right: 10px; 
+}
+
+.idioma-label {
+   text-align: center;
+   background-color: #0901a2; 
+   color: #ffffff; 
+   padding: 5px 10px; 
+   border-radius: 5px; 
+   margin-bottom: 10px; 
+   width: 20%; 
+   margin-left: 10px; 
+   margin-right: 10px; 
+}
+
+.form-container {
+   max-width: 600px;
+   margin: 50px auto;
+   background-color: #DCDCDC;
+   padding: 20px;
+   border-radius: 8px;
+   border: 3px solid #0901a2;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-group {
+   margin-bottom: 20px;
+}
+
+.input-group label {
+   display: block;
+   margin-bottom: 5px;
+   text-align: center; 
+}
+
+.input-group input[type="text"] {
+   width: 93.5%;
+   padding: 5px 10px;
+   border: 1.5px solid #ccc; 
+   border-radius: 5px;
+   margin-bottom: 5px;
+   margin-left: 10px; 
+   margin-right: 10px; 
+}
+
+.section {
+   margin-bottom: 20px
+      
+}
+
+fieldset {
+   border: 1px solid #0901a2; 
+   border-radius: 2px; 
+   padding: 10px;
+   margin-bottom: 10px;
+}
+
+legend {
+   font-weight: bold;
+}
+
+
+label[for="DNI"],
+label[for="NOM"],
+label[for="DIRECCIO"],
+label[for="ESTATCIVIL"],
+label[for="EXPERIENCIALABORAL"],
+label[for="IDIOMES"] {
+   background-color: #0901a2; 
+   color: #ffffff; 
+   padding: 5px 10px; 
+   border-radius: 5px; 
+   margin-bottom: 10px; 
+   width: 94%; 
+   margin-left: 10px; 
+   margin-right: 10px;
+  
+}
+
+.buttons {
+   text-align: center;
+  
+}
+
+.buttons button {
+   text-align: center;
+   padding: 10px 20px;
+   margin-right: 10px;
+   border: none;
+   border-radius: 4px;
+   background-color: red;
+   color: #fff;
+   cursor: pointer;
+}
+
+.checkbox-list {
+   list-style: none; 
+   margin-right: left;
+   margin: 0%;
+   padding: 0%;
+}
+
+#idiomes {
+   width: 97%; 
+   padding: 5px 10px;
+   border: 1.5px solid #ccc;
+   border-radius: 5px;
+   margin-bottom: 5px;
+   margin-left: 10px;
+}

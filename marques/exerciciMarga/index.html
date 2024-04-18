@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulari Elegant</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="form-container">
+  <form>
+    <div class="input-group">
+      <label for="DNI">DNI</label>
+      <input type="text" id="DNI" name="dni">
+      <label for="NOM">NOM</label>
+      <input type="text" id="NOM" name="nom">
+      <label for="DIRECCIO">DIRECCIÓ</label> 
+      <input type="text" id="DIRECCIO" name="direccio"> 
+    </div>
+     
+    <div class="section">
+  <fieldset>
+        <legend class="estat-civil-label">ESTAT CIVIL</legend>
+                <label style="text-align: left;"><input type="radio" name="estado_civil" value="soltero">Solter</label><br>
+        <label><input type="radio" name="estado_civil" value="casado">Casat</label><br>
+        <label><input type="radio" name="estado_civil" value="viudo">Vidu</label><br>
+        <label><input type="radio" name="estado_civil" value="divorciado">Divorciat</label><br>
+      </fieldset>
+       
+      <div class="section">
+    </div>
+  <fieldset>
+    <legend class="experiencia-laboral-label">EXPERIÈNCIA LABORAL</legend>
+      <label><input type="checkbox" name="experiencia" value="construccion"> Construcció</label></li>
+      <br>
+      <label><input type="checkbox" name="experiencia" value="administracion"> Administració</label></li>
+      <br>
+      <label><input type="checkbox" name="experiencia" value="hosteleria"> Hostaleria</label></li>
+    
+  </fieldset>
+
+  <fieldset class="idiomes-fieldset">
+    <legend class="idioma-label">IDIOMES</legend>
+    <label for="idiomes">TRIA UN IDIOMA:</label><br>
+    <select name="idiomes" id="idiomes">
+      <option value="ingles">Anglès</option>
+      <option value="frances">Francès</option>
+      <option value="aleman">Alemany</option>
+    </select>
+  </fieldset>
+</div>
+     
+    <div class="buttons">
+      <button type="submit">Acceptar</button>
+      <button type="button">Cancel·lar</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

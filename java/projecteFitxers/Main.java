@@ -11,19 +11,20 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-
+        //String[] nomFixers = new String[3];
+        //nomFixers[0]="equips.bin";
+        //nomFixers[1]="jugadors.bin";
+        //nomFixers[2]="estrategia.bin";
         int opcio = 0;
         final Scanner inputConsole = new Scanner(System.in);
-        
-        //No sé si és necessari
-        ArrayList<Equip> equips = new ArrayList<>();
-        
+    
         boolean run = true;
         while (run) {
             System.out.println("\nSelecciona una opció: \n\n 1.Opcions d'Equips \n 2.Opcions de Jugadors\n 3.Opcions d'Estratègies\n 4.Llegeix tots els fitxers\n 0.Per sortir");
             opcio = inputConsole.nextInt();
             switch (opcio) {
                 case 1:
+                    ArrayList<Equip> equips = new ArrayList<>();
                     boolean runSubmenu = true;
                     while (runSubmenu) {
                         System.out.println("\n----Opcions d'Equips----\n\n|Selecciona una opció:| \n|---------------------|\n| 1.Afegir equip      |\n| 2.Eliminar equip    |\n| 3.Modificar Equip   |\n| 4.Mostrar Equip     |\n| 0. Sortir           |");
@@ -54,7 +55,15 @@ public class Main {
                                 estrategies.add(new Estrategia("Suïcidi Prematur", "Es mata a si mateix dins el ventre de la mare"));
                                 estrategies.add(new Estrategia("Cum", "CUm"));
 
-                                equips.add(new Equip("Alpha", estrategies, membres));
+                                ArrayList<String> estrategiesStrings = new ArrayList<>();
+                                for (int i = 0; i < estrategies.size(); i++) {
+                                    estrategiesStrings.add(estrategies.get(i).nomEstrategia);
+                                }
+                                ArrayList<String> jugadorsStrings = new ArrayList<>();
+                                for (int i = 0; i < membres.size(); i++) {
+                                    jugadorsStrings.add(membres.get(i).nomJugador);
+                                }
+                                equips.add(new Equip("Alpha", estrategiesStrings, jugadorsStrings));
 
                                 System.out.println(equips.get(0));
 
@@ -76,7 +85,7 @@ public class Main {
                                     System.out.println("Llegint equips del fitxer:");
                                     while (true) {
                                         Equip equip = (Equip) inputStream.readObject();
-                                        System.out.println(equip);
+                                        //System.out.println(equip);
                                     }
                                 } catch (EOFException e) {
                                     System.out.println("Fi del fitxer.");
@@ -100,7 +109,7 @@ public class Main {
                                     System.out.println("Llegint jugadors del fitxer:");
                                     while (true) {
                                         Jugador jugadorAux = (Jugador) inputStream.readObject();
-                                        System.out.println(jugadorAux);
+                                        //System.out.println(jugadorAux);
                                     }
                                 } catch (EOFException e) {
                                     System.out.println("Fi del fitxer.");
@@ -210,16 +219,20 @@ public class Main {
                                 case 2:
                                     //eliminar jugador
                                     esperarEnter(inputConsole);
+                                    break;
                                 case 3:
                                     //Modificar jugador
                                     esperarEnter(inputConsole);
+                                    break;
                                 case 4:
                                     //Mostrar Jugador
                                     //System.out.println(jugador.toString());
                                     esperarEnter(inputConsole);
+                                    break;
                                 case 0:
                                     runSubmenu = false;
                                     esperarEnter(inputConsole);
+                                    break;
                                 
                                 default:
                                     System.out.println("Opció " + subOpcio + "no existeix");
@@ -271,12 +284,53 @@ public class Main {
                         while (true) {
                             Equip equip = (Equip) inputStream.readObject();
                             System.out.println(equip);
+                            ArrayList<String> membresAux = equip.nomMembres;
+                            ArrayList<String> estrategiesAux = equip.nomEstrategies;
+                            
+                            System.out.println("Llegint el fitxer jugadors.bin");
+                            try (ObjectInputStream inputStreamJug = new ObjectInputStream(new FileInputStream("jugadors.bin"))) {
+                                System.out.println("Llegint jugadors del fitxer:");
+                                while (true) {
+                                    Jugador jugadorAux = (Jugador) inputStreamJug.readObject();
+                                    System.out.println(jugadorAux); 
+                                    
+                                    System.out.println(membresAux + " membres " + jugadorAux.nomJugador + "membresAux" + membresAux.contains(jugadorAux.nomJugador)); 
+
+                                    if (membresAux.contains(jugadorAux.nomJugador)) {
+                                        
+                                        System.out.println(jugadorAux); 
+                                        //NO ARRIBA AQUÍ+
+                                    }
+                                }
+                            } catch (EOFException e) {
+                                System.out.println("Fi del fitxer.");
+                            } catch (IOException | ClassNotFoundException e) {
+                                System.err.println("Error en llegir els jugadors del fitxer: " + e.getMessage());
+                            }
+
+                            System.out.println("Llegint el fitxer estrategies.bin");
+                            try (ObjectInputStream inputStreamEst = new ObjectInputStream(new FileInputStream("estrategies.bin"))) {
+                                System.out.println("Llegint estrategies del fitxer:");
+                                while (true) {
+                                    Estrategia estrategiaAux = (Estrategia) inputStreamEst.readObject();
+                                    if (estrategiesAux.contains(estrategiaAux.nomEstrategia)) {
+                                        System.out.println(estrategiaAux);
+                                        //NO ARRIBA AQUÍ
+                                    }
+                                }
+                            } catch (EOFException e) {
+                                System.out.println("Fi del fitxer.");
+                            } catch (IOException | ClassNotFoundException e) {
+                                System.err.println("Error en llegir les estrategies del fitxer: " + e.getMessage());
+                            }
                         }
+                        
                     } catch (EOFException e) {
                         System.out.println("Fi del fitxer.");
                     } catch (IOException | ClassNotFoundException e) {
                         System.err.println("Error en llegir els equips del fitxer: " + e.getMessage());
                     }
+                    
                     esperarEnter(inputConsole);
                     break;
                 case 0: 
@@ -310,6 +364,54 @@ public class Main {
 
     public void llegirDadesFitxers() {
         
+    }
+    
+    public void MenuFicheros(String[] nomFixers[],Equip equip,Jugador jugador,Estrategia estrategia){
+        Scanner sc = new Scanner(System.in);
+        Boolean runner = true; 
+        while (runner){ 
+        System.out.println("\n----Opcions De Fixers----\n\n|Selecciona una opció:| \n|---------------------|\n| 1.Salvar Informació    |\n| 2.Separar   |\n|  3.Fusionar   |\n| 0. Sortir           |");
+        int option = sc.nextInt();
+        switch (option){
+            case 1: 
+                try {
+                    /*if (FileOutputStream fixer = new FileOutputStream(nomFixers[0])){
+                        
+                        byte[] equips = equip.getBytes; 
+                        fichero.writer(equips); 
+                    }
+                    else if(FileOutputStream fixer = new FileOutputStream(nomFixers[1])){
+                        byte[] jugadors = jugador.getBytes; 
+                        fichero.writer(jugadors); 
+                    }    
+                    else if(FileOutputStream fixer = new FileOutputStream(nomFixers[2])){
+                        byte[] estrategias = estrategia.getBytes; 
+                        fichero.writer(estrategias); 
+                    }
+                */
+                }
+                catch (Exception e){
+                    System.out.println("Error al desar l'informacio");
+                }
+            case 2:
+                try {
+                    
+                } catch (Exception e) {
+                    System.out.println("Error a separar l'informacio");
+                }
+            case 3:
+                try {
+                    
+                } catch (Exception e) {
+                    System.out.println("Error a fusionar l'informacio");
+                }
+            case 0:
+                runner = false;
+                esperarEnter(new Scanner(System.in));
+                break;          
+            default: System.out.println("Opcio no valid"); 
+        }
+        }
     }
 
     public static void esperarEnter(Scanner inputConsole) {
