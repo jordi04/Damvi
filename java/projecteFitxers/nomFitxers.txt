@@ -1,0 +1,3 @@
+equips.bin
+jugadors.bin
+estrategies.bin

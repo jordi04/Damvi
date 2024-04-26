@@ -11,10 +11,27 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        //String[] nomFixers = new String[3];
-        //nomFixers[0]="equips.bin";
-        //nomFixers[1]="jugadors.bin";
-        //nomFixers[2]="estrategia.bin";
+
+
+        //Al principi de l'execució llegim el fitxer que conté tots els fitxers necessaris per a l'execució
+
+        ArrayList<String> nomFitxers = new ArrayList<>();
+        String filePath = "nomFitxers.txt";
+        try {
+            File file = new File(filePath);
+            Scanner scanner = new Scanner(file);
+            int xd = 0;
+            while (scanner.hasNextLine()) {
+                nomFitxers.add(scanner.nextLine());
+                System.out.println("cum 1 xd: "+ xd);
+                xd++;
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+            //Això insereix els noms dels fitxers a l'array list nomFitxers
+        
         int opcio = 0;
         final Scanner inputConsole = new Scanner(System.in);
     
@@ -42,7 +59,7 @@ public class Main {
                                 habilitat2.add("Gran capacitat d'absorció de dany");
                                 habilitat2.add("Lideratge al camp de batalla");
                                 ArrayList<String> habilitat3 = new ArrayList<>();
-                                habilitat3.add("Excel·lent habilitat de curació");
+                                habilitat3.add("Excel·lent habilitat de curació");ngdbfdbvdbdbfdfdgfdgfdñgfdññfsñgfdgfdgfñdgfdñgfdñgfdñññ
                                 habilitat3.add("Presa de decisions ràpida en situacions");
                                 
                                 
@@ -70,7 +87,7 @@ public class Main {
 
                                 //Emmegatzment les dades inserides als fitxers
                                 //Escriu al fitxer equips
-                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("equips.bin"))) {
+                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(nomFitxers.get(0)))) {
                                     for (Equip equip : equips) {
                                         outputStream.writeObject(equip);
                                     }
@@ -81,7 +98,7 @@ public class Main {
 
                                 //Llegeix el fitxer equips
                                 System.out.println("Llegint el fitxer equips.bin");
-                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("equips.bin"))) {
+                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomFitxers.get(0)))) {
                                     System.out.println("Llegint equips del fitxer:");
                                     while (true) {
                                         Equip equip = (Equip) inputStream.readObject();
@@ -94,7 +111,7 @@ public class Main {
                                 }
 
                                 //Escriu al fitxer jugadors
-                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("jugadors.bin"))) {
+                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(nomFitxers.get(1)))) {
                                     for (Jugador jugador : membres) {
                                         outputStream.writeObject(jugador);
                                     }
@@ -105,7 +122,7 @@ public class Main {
 
                                 //Llegeix el fitxer jugadors
                                 System.out.println("Llegint el fitxer jugadors.bin");
-                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("jugadors.bin"))) {
+                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomFitxers.get(1)))) {
                                     System.out.println("Llegint jugadors del fitxer:");
                                     while (true) {
                                         Jugador jugadorAux = (Jugador) inputStream.readObject();
@@ -118,7 +135,7 @@ public class Main {
                                 }
 
                                 //Escriu al fitxer estrategies
-                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("estrategies.bin"))) {
+                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(nomFitxers.get(2)))) {
                                     for (Estrategia estrategia : estrategies) {
                                         outputStream.writeObject(estrategia);
                                     }
@@ -129,7 +146,7 @@ public class Main {
 
                                 //Llegeix el fitxer estrategies
                                 System.out.println("Llegint el fitxer estrategies.bin");
-                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("estrategies.bin"))) {
+                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomFitxers.get(2)))) {
                                     System.out.println("Llegint estrategies del fitxer:");
                                     while (true) {
                                         Estrategia estrategiaAux = (Estrategia) inputStream.readObject();
@@ -153,7 +170,7 @@ public class Main {
                             //Mostrar equip
                             case 4:
                                 System.out.println("Llegint el fitxer equips.bin");
-                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("equips.bin"))) {
+                                try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomFitxers.get(0)))) {
                                     System.out.println("Llegint equips del fitxer:");
                                     int auxIndex = 1; //restar 1 per aconseguir el num d'index de l'array list
                                     //Auxx!!!
@@ -278,28 +295,27 @@ public class Main {
                     break;
                 case 4:
                     //Llegeix el fitxer equips
-                    System.out.println("Llegint el fitxer equips.bin");
-                    try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("equips.bin"))) {
+                    System.out.println("Llegint el fitxer "+ nomFitxers.get(0));
+                    try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(nomFitxers.get(0)))) {
                         System.out.println("Llegint equips del fitxer:");
+                    
                         while (true) {
                             Equip equip = (Equip) inputStream.readObject();
                             System.out.println(equip);
                             ArrayList<String> membresAux = equip.nomMembres;
                             ArrayList<String> estrategiesAux = equip.nomEstrategies;
+                            System.err.println("\n\n\n\n\n\n\nPUTA\n\n\n\n\n\n\n");
+
                             
                             System.out.println("Llegint el fitxer jugadors.bin");
-                            try (ObjectInputStream inputStreamJug = new ObjectInputStream(new FileInputStream("jugadors.bin"))) {
+                            try (ObjectInputStream inputStreamJug = new ObjectInputStream(new FileInputStream(nomFitxers.get(1)))) {
                                 System.out.println("Llegint jugadors del fitxer:");
+                                System.err.println("\n\n\n\n\n\n\nPUTA2\n\n\n\n\n\n\n");
+
                                 while (true) {
                                     Jugador jugadorAux = (Jugador) inputStreamJug.readObject();
-                                    System.out.println(jugadorAux); 
-                                    
-                                    System.out.println(membresAux + " membres " + jugadorAux.nomJugador + "membresAux" + membresAux.contains(jugadorAux.nomJugador)); 
-
                                     if (membresAux.contains(jugadorAux.nomJugador)) {
-                                        
                                         System.out.println(jugadorAux); 
-                                        //NO ARRIBA AQUÍ+
                                     }
                                 }
                             } catch (EOFException e) {
@@ -309,13 +325,12 @@ public class Main {
                             }
 
                             System.out.println("Llegint el fitxer estrategies.bin");
-                            try (ObjectInputStream inputStreamEst = new ObjectInputStream(new FileInputStream("estrategies.bin"))) {
+                            try (ObjectInputStream inputStreamEst = new ObjectInputStream(new FileInputStream(nomFitxers.get(2)))) {
                                 System.out.println("Llegint estrategies del fitxer:");
                                 while (true) {
                                     Estrategia estrategiaAux = (Estrategia) inputStreamEst.readObject();
                                     if (estrategiesAux.contains(estrategiaAux.nomEstrategia)) {
                                         System.out.println(estrategiaAux);
-                                        //NO ARRIBA AQUÍ
                                     }
                                 }
                             } catch (EOFException e) {
@@ -366,36 +381,60 @@ public class Main {
         
     }
     
-    public void MenuFicheros(String[] nomFixers[],Equip equip,Jugador jugador,Estrategia estrategia){
+    public void MenuFicheros(String[] nomFixers[],ArrayList<Equip> equips,ArrayList<Jugador> membres,ArrayList<Estrategia> estrategies){
         Scanner sc = new Scanner(System.in);
         Boolean runner = true; 
         while (runner){ 
-        System.out.println("\n----Opcions De Fixers----\n\n|Selecciona una opció:| \n|---------------------|\n| 1.Salvar Informació    |\n| 2.Separar   |\n|  3.Fusionar   |\n| 0. Sortir           |");
+        System.out.println("\n----Opcions De Fixers----\n\n|Selecciona una opció:| \n|---------------------|\n| 1.Desar les modificacions    |\n| 2.Separar   |\n|  3.Fusionar   |\n| 0. Sortir           |");
         int option = sc.nextInt();
         switch (option){
             case 1: 
                 try {
-                    /*if (FileOutputStream fixer = new FileOutputStream(nomFixers[0])){
-                        
-                        byte[] equips = equip.getBytes; 
-                        fichero.writer(equips); 
+                    System.out.println("Esteu segur de desar les modificacions? \n1.Sí \n 2.No \nEcull una opció: ");
+                    int optionSave = sc.nextInt();
+                    switch (optionSave){
+                        case 1: 
+                                //Escriu al fitxer equips 
+                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("equips.bin"))) {
+                                    for (Equip equip : equips) {
+                                        outputStream.writeObject(equip);
+                                    }
+                                    System.out.println("Equips serialitzats amb èxit.");
+                                } catch (IOException e) {
+                                    System.err.println("Error en escriure els equips al fitxer: " + e.getMessage());
+                                }
+
+                                 //Escriu al fitxer jugadors
+                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("jugadors.bin"))) {
+                                    for (Jugador jugador : membres) {
+                                        outputStream.writeObject(jugador);
+                                    }
+                                    System.out.println("Jugadors serialitzats amb èxit.");
+                                } catch (IOException e) {
+                                    System.err.println("Error en escriure els jugadors al fitxer: " + e.getMessage());
+                                }
+                                //Escriu al fitxer estrategies
+                                try (ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream("estrategies.bin"))) {
+                                    for (Estrategia estrategia : estrategies) {
+                                        outputStream.writeObject(estrategia);
+                                    }
+                                    System.out.println("Estrategies serialitzats amb èxit.");
+                                } catch (IOException e) {
+                                    System.err.println("Error en escriure els estrategies al fitxer: " + e.getMessage());
+                                }
+                                break;
+                        case 2: System.out.println("Infomarció no desada");break;
+
+                        default: System.out.println("Opció no vàlida");
                     }
-                    else if(FileOutputStream fixer = new FileOutputStream(nomFixers[1])){
-                        byte[] jugadors = jugador.getBytes; 
-                        fichero.writer(jugadors); 
-                    }    
-                    else if(FileOutputStream fixer = new FileOutputStream(nomFixers[2])){
-                        byte[] estrategias = estrategia.getBytes; 
-                        fichero.writer(estrategias); 
-                    }
-                */
                 }
                 catch (Exception e){
                     System.out.println("Error al desar l'informacio");
                 }
             case 2:
                 try {
-                    
+                    String path = crearFitxer();
+                        
                 } catch (Exception e) {
                     System.out.println("Error a separar l'informacio");
                 }
@@ -409,9 +448,69 @@ public class Main {
                 runner = false;
                 esperarEnter(new Scanner(System.in));
                 break;          
-            default: System.out.println("Opcio no valid"); 
+            default: System.out.println("Opcio no vàlida"); 
         }
         }
+    }
+
+    public static void modificarEquip() {
+        Scanner inputConsole = new Scanner(System.in);
+        System.out.println("Llegint el fitxer equips.bin");
+        try (ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("equips.bin"))) {
+            System.out.println("Llegint equips del fitxer:");
+            while (true) {
+                Equip equip = (Equip) inputStream.readObject();
+                System.out.println(equip);
+                ArrayList<String> membresAux = equip.nomMembres;
+                ArrayList<String> estrategiesAux = equip.nomEstrategies;
+                
+                System.out.println("Llegint el fitxer jugadors.bin");
+                try (ObjectInputStream inputStreamJug = new ObjectInputStream(new FileInputStream("jugadors.bin"))) {
+                    System.out.println("Llegint jugadors del fitxer:");
+                    while (true) {
+                        Jugador jugadorAux = (Jugador) inputStreamJug.readObject();
+                        System.out.println(jugadorAux); 
+                        
+                        if (membresAux.contains(jugadorAux.nomJugador)) {
+                            System.out.println(jugadorAux); 
+                        }
+                    }
+                } catch (EOFException e) {
+                    System.out.println("Fi del fitxer.");
+                } catch (IOException | ClassNotFoundException e) {
+                    System.err.println("Error en llegir els jugadors del fitxer: " + e.getMessage());
+                }
+
+                System.out.println("Llegint el fitxer estrategies.bin");
+                try (ObjectInputStream inputStreamEst = new ObjectInputStream(new FileInputStream("estrategies.bin"))) {
+                    System.out.println("Llegint estrategies del fitxer:");
+                    while (true) {
+                        Estrategia estrategiaAux = (Estrategia) inputStreamEst.readObject();
+                        if (estrategiesAux.contains(estrategiaAux.nomEstrategia)) {
+                            System.out.println(estrategiaAux);
+                        }
+                    }
+                } catch (EOFException e) {
+                    System.out.println("Fi del fitxer.");
+                } catch (IOException | ClassNotFoundException e) {
+                    System.err.println("Error en llegir les estrategies del fitxer: " + e.getMessage());
+                }
+            }
+            
+        } catch (EOFException e) {
+            System.out.println("Fi del fitxer.");
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Error en llegir els equips del fitxer: " + e.getMessage());
+        }
+        
+        esperarEnter(inputConsole);
+    }
+    
+    public static String crearFitxer() {
+        Scanner inputConsole = new Scanner(System.in);
+        System.out.print("Insereix el nom de fitxer (sense l'extensió .bin): ");
+        String filename = inputConsole.nextLine() + ".bin";
+        return filename;
     }
 
     public static void esperarEnter(Scanner inputConsole) {
@@ -419,4 +518,9 @@ public class Main {
         inputConsole.nextLine();
         //scanner.close();
     }
+
+    
 }
+
+
+
