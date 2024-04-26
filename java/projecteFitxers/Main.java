@@ -59,7 +59,7 @@ public class Main {
                                 habilitat2.add("Gran capacitat d'absorció de dany");
                                 habilitat2.add("Lideratge al camp de batalla");
                                 ArrayList<String> habilitat3 = new ArrayList<>();
-                                habilitat3.add("Excel·lent habilitat de curació");ngdbfdbvdbdbfdfdgfdgfdñgfdññfsñgfdgfdgfñdgfdñgfdñgfdñññ
+                                habilitat3.add("Excel·lent habilitat de curació");
                                 habilitat3.add("Presa de decisions ràpida en situacions");
                                 
                                 
