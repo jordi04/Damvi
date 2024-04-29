@@ -390,7 +390,7 @@ public class Main {
         switch (option){
             case 1: 
                 try {
-                    System.out.println("Esteu segur de desar les modificacions? \n1.Sí \n 2.No \nEcull una opció: ");
+                    System.out.println("Esteu segur de desar les modificacions? \n1.Sí \n 2.No \nEscull una opció: ");
                     int optionSave = sc.nextInt();
                     switch (optionSave){
                         case 1: 
